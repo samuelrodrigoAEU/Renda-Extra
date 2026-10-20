@@ -22,7 +22,7 @@ Foram 57 empresas encontradas. Abaixo, as mais relevantes por segmento. **Priori
 ## 2. Clínicas de estética
 | Empresa | Região | Status | Evidência | Prioridade | Ideia |
 |---|---|---|---|---|---|
-| Leude Barbosa Estética | Bueno (Av. T-4, 619, s. 812) | NL | Instagram @leudebarbosa e método próprio citado no [Curta Mais](https://curtamais.com.br/goiania/esteticista-em-goiania-desenvolve-metodo-inedito-de-limpeza-de-pele-que-une-experiencia-e-tecnologia/) | **A** | Página do método de limpeza de pele com camadas da pele em corte, sem promessa clínica |
+| Leude Barbosa Estética | Bueno (Av. T-4, 619, s. 812) | NL, **confirmado na busca nome + site em 21/10** · tel. (62) 98100-7881 · **DEMO 05** | Instagram @leudebarbosa e método próprio citado no [Curta Mais](https://curtamais.com.br/goiania/esteticista-em-goiania-desenvolve-metodo-inedito-de-limpeza-de-pele-que-une-experiencia-e-tecnologia/) | **A** | Página do método de limpeza de pele com camadas da pele em corte, sem promessa clínica |
 | Instituto Mademoiselle | Bueno | NL | diretório [infoisinfo](https://goiania.infoisinfo-br.com/busca/estetica/b/setor-bueno) | B | — |
 | DRM Clínica de Estética | Bueno | NL | diretório infoisinfo | B | — |
 | Morozoff Clinic | Bueno (R. 214-A) | SE | [morozoffclinic.com.br](https://morozoffclinic.com.br/) | C | — |
@@ -42,10 +42,10 @@ Foram 57 empresas encontradas. Abaixo, as mais relevantes por segmento. **Priori
 ## 4. Barbearias
 | Empresa | Região | Status | Evidência | Prioridade | Ideia |
 |---|---|---|---|---|---|
-| Don Barbearia (3 unidades) | Marista, Bueno… | NL | @donbarbearia ([beard.com.br](https://blog.beard.com.br/barbearias-no-setor-marista-goiania/), [Mais Goiás](https://www.maisgoias.com.br/divirta-se/barbearias-em-goiania-que-todo-homem-moderno-deveria-conhecer/)) | **A** | Seletor de unidade e de barbeiro, com o "corte da semana" em tipografia expressiva |
+| Don Barbearia | Marista (Av. Mutirão, 2189) e Alpha Mall | **SE, corrigido em 21/10:** [donbarbearia.com.br](https://donbarbearia.com.br/) | @donbarbearia ([beard.com.br](https://blog.beard.com.br/barbearias-no-setor-marista-goiania/), [Mais Goiás](https://www.maisgoias.com.br/divirta-se/barbearias-em-goiania-que-todo-homem-moderno-deveria-conhecer/)) | **A** | Seletor de unidade e de barbeiro, com o "corte da semana" em tipografia expressiva |
 | Mamutt Barber | Marista | NL | @mamuttbarber (beard.com.br) | A | — |
 | Edom Barbearia | Marista | NL | @edom.barbearia (beard.com.br) | B | — |
-| New Vikings | Bueno | NL | rankings ([Curta Mais](https://curtamais.com.br/goiania/10-barbearias-mais-bem-avaliadas-goiania/)), tel. (62) 99173-2400 | A | Universo viking como direção de arte (tema já existente na marca) |
+| New Vikings | Bueno (Av. T-10, 401) | **provável SE** (diretório cita nvkbarbearia.com.br); mais de 1.000 avaliações nota máxima segundo o [Curta Mais](https://curtamais.com.br/goiania/new-vikings-melhor-barbearia-goiania/) | rankings ([Curta Mais](https://curtamais.com.br/goiania/10-barbearias-mais-bem-avaliadas-goiania/)), tel. (62) 99173-2400 | A | Universo viking como direção de arte (tema já existente na marca) |
 | Bourbon Barbearia & Salon | Bueno | NL | @bourbonbarbearia | B | — |
 | Barbearia 18K | Marista + 4 unidades | SE e agendamento Trinks; nota 5,0 com 272 a 283 avaliações (guias) | [barbearia18k.com.br](https://barbearia18k.com.br/), [Revista Zelo](https://revistazelo.com.br/barbearia-18k-celebra-10-anos-com-nova-unidade-no-alphaville-flamboyant/) | C | — |
 
@@ -75,7 +75,7 @@ Foram 57 empresas encontradas. Abaixo, as mais relevantes por segmento. **Priori
 ## 8. Clínicas veterinárias
 | Clínica | Status | Evidência | Prioridade |
 |---|---|---|---|
-| Clínica Veterinária Anjos de Patas | NL | nota 4,5 com 216 avaliações em agregador ([vetclinicasbr](https://vetclinicasbr.com/cidade/goiania-go/)) | **A** |
+| Clínica Veterinária Anjos de Patas | dados conflitantes (unidades de outras cidades com o mesmo nome; existe [clinicavetanjosdepatas.com.br](https://www.clinicavetanjosdepatas.com.br/)) | agregador 4,5 (216) | C, não confiável |
 | Hospital Veterinário Bueno | NL | citado no [Curta Mais](https://curtamais.com.br/goiania/5-hospitais-veterinarios-em-goiania-com-atendimento-24-horas/) | B |
 | Titiu, Doutor Amicão, Vet Center, Santa Clara, Dog Center | SE | sites próprios | C |
 
@@ -92,3 +92,5 @@ Foram 57 empresas encontradas. Abaixo, as mais relevantes por segmento. **Priori
 2. **Leude Barbosa Estética:** método próprio com cobertura de imprensa.
 3. **@personalclaudina:** CREF público e método definido.
 4. **Anjos de Patas:** 216 avaliações e sem site localizado.
+
+> **Lição (21/10):** 3 de 4 empresas marcadas como NL tinham site (Dois Eme, GAW, Don). A busca "nome + site" é **obrigatória antes de priorizar**, não só antes de construir.
