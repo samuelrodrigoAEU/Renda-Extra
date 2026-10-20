@@ -76,3 +76,72 @@ Mínimo de 8 nos critérios principais. Meta de 9 a 10 em originalidade, execuç
 - Planejar desde o início um **render estático** de cada cena (fallback, Open Graph e imagens editoriais).
 - Toda captura por etapa vem acompanhada de uma checagem automática (`show-cta`, classes do tema, URLs).
 - Antes de escolher a empresa: buscar `nome + site` e `nome + cidade`. Duas falsas "sem site" já aconteceram.
+
+---
+
+## Autópsia criativa das demos 01 e 02 (antes da 03)
+
+**Erros de julgamento, não só técnicos:**
+1. **Faltou contar quem é a empresa.** Nenhuma das duas tinha endereço completo, horário, telefone nem mapa. A Lindyse tinha esses dados públicos (Av. 24 de Outubro, 1163, horário seg–sex 8h30–18h) e eu não usei. Um visitante não conseguiria *ir* à loja.
+2. **Zero prova social pesquisada.** Não procurei avaliações públicas em nenhuma. Confiança ficou só em "CONFIRMAR".
+3. **Imagens:** a 01 tinha molduras vazias. A 02 usava renders rotulados: honestos, mas mostram o *produto genérico*, nunca a *empresa*. Nenhuma das duas mostrava lugar, pessoas ou trabalho real. (Limitação real: a rede bloqueia Instagram, sites e bancos de fotos. Ver abaixo.)
+4. **Títulos abstratos:** "Feitas à mão, uma vez só." é bonito, mas não diz "alianças" sem o subtítulo. A 01 foi mais clara.
+5. **Excesso de cara de demonstração:** o tracejado "CONFIRMAR" espalhado por seções inteiras faz a página parecer inacabada. Melhor omitir o que não é confirmado e concentrar as pendências numa lista separada (README e apresentação).
+6. **As duas eram escuras e "objeto 3D como herói"** (a 02 ainda mais). Risco de virar assinatura repetida.
+7. **3D no topo pesa o primeiro carregamento** (LCP depende de shader e PMREM) em aparelho fraco.
+
+**O que preservar:** gravação ao vivo e medidor de aro (ferramentas úteis que alimentam o formulário); tipografia monumental com eixo óptico; renders estáticos da própria cena; formulário → mensagem qualificada; testes e capturas por seção; vídeo em tempo virtual.
+
+### Padrões já usados (evitar ou reinventar de propósito)
+- Fundo escuro de veludo ou papel creme com serifa itálica colorida em uma palavra.
+- 3D fixo como herói e etapas no scroll ao lado.
+- Eyebrow em caixa alta espaçada antes de todo título.
+- Seleção de opções em pílulas, FAQ em `<details>` e processo numerado em 4 ou 5 colunas.
+- Alternância escuro/claro a cada seção. CTA fixo em pílula no celular.
+- Objeto girando com a luz seguindo o cursor.
+
+### Limitação de imagens (ambiente)
+O proxy recusa images.unsplash.com, pexels, wikimedia, pixabay, Instagram e os sites das empresas. Não há como baixar fotos licenciadas nem reais aqui. Estratégia: (a) imagens próprias honestas (renders e ilustração tipográfica), sempre rotuladas; (b) **lista de fotos a produzir** com direção de arte, para o cliente aprovar e fotografar; (c) layout pensado para receber as fotos reais sem redesenho.
+
+---
+
+## Demo 03: Solo Espaço Pilates · conceito "Tensão"
+
+**O que mudou de verdade em relação à 01 e à 02 (aplicando a autópsia):**
+- **Linguagem clara e vibrante,** com cores funcionais (código das molas). Nada de fundo escuro ou papel creme.
+- **Empresa explicada por completo:** razão social, CNPJ, ano, frentes de trabalho, unidades com endereço, CEP, horário, telefone clicável e "Como chegar".
+- **Prova social real e com fonte:** 4,8 com 25 avaliações, link e data na página. Nenhum depoimento inventado.
+- **Pendências fora da página:** em vez de tracejados "CONFIRMAR" espalhados, o que não foi confirmado é omitido e listado no README.
+- **Título que diz o que vende:** "Pilates para reabilitar, fortalecer e alinhar o corpo." A palavra gigante é decorativa (`aria-hidden`); o H1 é claro.
+- **3D fora da abertura:** a primeira tela usa imagem com `fetchpriority=high`. O 3D só carrega perto da seção. É a melhor estratégia de LCP até agora.
+- **3D com função:** a física das molas *ensina* o método (a vermelha resiste mais, verificado em teste), e não é só um objeto girando.
+- **Formulário com prévia ao vivo da mensagem** e telefones por unidade como alternativa ao WhatsApp.
+- **Testes mais fortes:** 41 checagens, incluindo tablet, movimento reduzido, física (mola vermelha < amarela) e telefone clicável.
+
+| Critério | Nota | Evidência / limitação |
+|---|---|---|
+| Originalidade | 9 | Tipografia com física de mola real e reformer com resistência por mola. Nenhuma técnica repete as demos anteriores |
+| Qualidade tipográfica | 9 | Eixo de largura usado como linguagem (estica, comprime, oscila). Hierarquia clara entre display, serifa itálica e texto |
+| Impacto visual | 8 | Abertura forte e limpa. Sem fotografia real, o impacto fica abaixo do que fotos do estúdio dariam |
+| Fotografia | 5 | **Limitação de ambiente:** a rede bloqueia bancos de fotos e o Instagram. Renders rotulados e lista de fotos a produzir |
+| Profundidade de informação | 9 | Razão social, CNPJ, unidades, endereço, CEP, horários, telefones, mapa, frentes, FAQ |
+| Prova de confiança | 8 | Nota real com fonte e data, ano de fundação, CNPJ. Faltam fotos da equipe e depoimentos autorizados |
+| 3D / animação | 8 | Física estável (subpassos, batente com quique). Modelo convincente, mas simplificado (sem cordas e alças) |
+| Clareza comercial | 9 | Objetivo único (aula experimental) com CTA em todas as seções e telefones como alternativa |
+| Responsividade | 8 | 390, 820 e 1440 px sem rolagem lateral (verificado). Falta aparelho real |
+| Desempenho | 8 | 5 KB iniciais, abertura sem WebGL, 3D sob demanda e pausado fora da tela. FPS real não medido |
+| Funcionalidade | 8 | Tudo testado. O WhatsApp depende do número oficial; os telefones funcionam |
+| Acabamento | 8 | Revisão por seção em 3 larguras. Falhas encontradas e corrigidas abaixo |
+
+### Erros encontrados e corrigidos na produção
+1. "PILATES" comprimida ocupava a primeira tela inteira e escondia o H1. Agora há limite de altura e repouso mais largo.
+2. A largura útil ignorava o padding: a palavra transbordava. Agora usa a largura interna real.
+3. Força alta demais no controle deslizante: todas as molas chegavam ao fim do curso, e a demonstração não mostrava diferença.
+4. As estrelas não apareciam: a variável `--f` estava no filho, não no elemento com a máscara.
+5. O rodapé transbordava no celular (palavra a 150% e grade sem `minmax(0, …)`).
+6. Escolher uma mola marcava o objetivo no formulário sem ação do usuário. Agora só marca com clique.
+
+### Regras novas para a 04
+- **Fotografia continua sendo o maior déficit.** Antes de prospectar a próxima empresa, liberar no ambiente um banco de imagens (Unsplash ou Pexels) **ou** pedir ao cliente as fotos na primeira conversa.
+- Começar pela primeira tela: o H1 que explica o negócio precisa aparecer *sem rolar* em 390 × 844.
+- Toda física ou interação precisa de um teste que prove o efeito (como "a vermelha resiste mais").

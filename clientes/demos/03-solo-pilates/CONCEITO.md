@@ -1,3 +1,5 @@
+> **Substituído (outubro de 2026):** este foi o primeiro rascunho. O conceito implementado é o "Tensão", descrito no README.md desta pasta.
+
 # Conceito 2 — Solo Espaço Pilates (estúdio boutique)
 
 **Status:** conceito aprovado internamente. A demo só será construída depois que a empresa responder "quero ver" (veja o playbook).

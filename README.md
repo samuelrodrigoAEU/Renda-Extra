@@ -12,7 +12,7 @@ clientes/
   demos/                conceitos independentes (noindex, com faixa de aviso)
     01-marcenaria-alto-padrao/   piloto: Vite + TS + Three.js (móvel 3D e acabamentos)
     02-aliancas-lindyse/         "O Estojo": travessia pelo anel, gravação 3D ao vivo, medidor de aro
-    03-pilates-boutique/         conceito documentado
+    03-solo-pilates/             "Tensão": tipografia elástica, reformer 3D com física de molas, agendamento
     _descartados/                conceitos descartados, com o motivo
   autorizados/          só depois de autorização por escrito da empresa
   contratados/          só depois da entrada paga

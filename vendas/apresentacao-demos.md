@@ -13,8 +13,11 @@
 **Frase de venda:** "O casal chega no WhatsApp com a aliança praticamente desenhada: ouro, largura, gravação e os dois aros."
 **Mensagens e proposta:** `vendas/mensagem-lindyse.md`.
 
-## 3. Solo Espaço Pilates (CONCEITO)
-Ver `clientes/demos/03-pilates-boutique/CONCEITO.md`.
+## 3. Solo Espaço Pilates: "Tensão" (PRONTA)
+**Problema:** 20 anos de estúdio e nota 4,8, mas sem site próprio. O agendamento depende do direct e do WhatsApp, e há uma avaliação pública reclamando da demora no retorno.
+**O que a demo faz:** a palavra PILATES se comporta como uma mola. As cores das molas do reformer organizam os quatro caminhos (reabilitação, postura, condicionamento, online). Um reformer 3D deixa a pessoa *sentir* a resistência de cada mola. As unidades aparecem com endereço, horário, telefone e mapa. O pedido de aula experimental mostra a mensagem pronta antes de enviar.
+**O que funciona hoje:** tudo, menos o número do WhatsApp (pendente). Os telefones já ligam.
+**Mensagens e proposta:** `vendas/mensagem-solo.md`.
 
 ## Descartado: GAW Joalheria Autoral
 Fica em São Paulo e tem site próprio. Ver `clientes/demos/_descartados/`.
