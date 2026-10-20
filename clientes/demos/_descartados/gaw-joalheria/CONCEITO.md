@@ -1,5 +1,7 @@
 # Conceito 3 — GAW Joalheria Autoral
 
+> **DESCARTADO (20/10/2026):** a GAW fica em São Paulo (Lapa) e tem site próprio (gawgaw.com.br). Fonte: casamentos.com.br e gawgaw.com.br/us/quem-somos.
+
 **Status:** conceito. **Bloqueio:** confirmar a cidade e se já existe loja online antes de investir horas.
 
 ## Negócio e público

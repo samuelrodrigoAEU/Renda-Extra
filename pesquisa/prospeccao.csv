@@ -1,7 +1,7 @@
 id,empresa,segmento,cidade,instagram,site_status,pontuacao,etapa,ultimo_contato,observacoes
 1,Dois Eme Marcenaria,Móveis planejados,Goiânia,@moveisplanejadosgoiania,existente_avaliar,80,demo_pronta,,Site doisememarcenaria.com.br (avaliar). Av. Areião 663 sala 04 Pedro Ludovico
 2,Max Ambientes Planejados,Móveis planejados,Goiânia,@max_ambientes_planejados,nao_localizado,80,pesquisada,,
-3,GAW Joalheria Autoral,Joalheria,A confirmar,@gawjoias,nao_localizado,79,conceito,,Confirmar cidade
+3,GAW Joalheria Autoral,Joalheria,São Paulo,@gawjoias,existente,0,descartada,,SP e site gawgaw.com.br
 4,Recinto Ambientes Planejados,Móveis planejados,Goiânia,@recintoambientes,nao_localizado,78,pesquisada,,
 5,Solo Espaço Pilates,Pilates boutique,Goiânia,@solo_espaco_pilates,nao_localizado,76,conceito,,Marista e Alphamall
 6,Monalisa Móveis Planejados,Móveis planejados,Goiânia,monalisaplanejados,nao_localizado,74,pesquisada,,
@@ -20,3 +20,6 @@ id,empresa,segmento,cidade,instagram,site_status,pontuacao,etapa,ultimo_contato,
 19,Referência Arquitetura,Arquitetura,Goiânia,,nao_localizado,57,pesquisada,,
 20,Elite Festas Goiânia,Eventos,Goiânia,@elitefestasgo,nao_localizado,55,pesquisada,,
 21,Espaço Conceitual Pilates e Fisio,Pilates,Goiânia,@conceitualpilates,existente,52,pesquisada,,
+22,Lindyse Joias,Joalheria (alianças),Goiânia,,existente_sem_lp_aliancas,78,demo_pronta,,lindysejoias.com; Setor Campinas
+23,Altar Joalheria,Joalheria (alianças),Goiânia,,existente,60,pesquisada,,35 anos; avaliar site
+24,Brandão 18K,Joalheria sob medida,Goiânia,,existente,55,pesquisada,,brandao18k.com
