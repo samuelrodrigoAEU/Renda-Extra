@@ -145,3 +145,73 @@ O proxy recusa images.unsplash.com, pexels, wikimedia, pixabay, Instagram e os s
 - **Fotografia continua sendo o maior déficit.** Antes de prospectar a próxima empresa, liberar no ambiente um banco de imagens (Unsplash ou Pexels) **ou** pedir ao cliente as fotos na primeira conversa.
 - Começar pela primeira tela: o H1 que explica o negócio precisa aparecer *sem rolar* em 390 × 844.
 - Toda física ou interação precisa de um teste que prove o efeito (como "a vermelha resiste mais").
+
+---
+
+## Auditoria 2 (21/10/2026): evidências medidas nas demos 01–03
+
+Ferramentas: Lighthouse 12 (mobile, Chromium com GPU emulada por software, que **infla o TBT** em páginas com WebGL), capturas do Playwright e leitura do código. Problemas **confirmados** vêm com a medição; **hipóteses** estão marcadas.
+
+| Demo | Desempenho | Acessibilidade | Boas práticas | SEO* | LCP | TBT | CLS |
+|---|---|---|---|---|---|---|---|
+| 01 Marcenaria | 49 | 96 | 100 | 54 | 3,8 s | 23,6 s | 0 |
+| 02 Lindyse | 67 | 96 | 100 | 58 | 2,0 s | 11,6 s | 0 |
+| 03 Solo | 92 | 100 | 100 | 58 | 2,7 s | 0 ms | 0,094 |
+\*SEO baixo é proposital (`noindex` nas demonstrações), mais `robots.txt` inexistente.
+
+| # | Problema | Evidência | Impacto | Correção | Como evitar |
+|---|---|---|---|---|---|
+| 1 | WebGL na abertura trava o carregamento | TBT de 23,6 s (01) e 11,6 s (02) contra 0 ms na 03, que abre com imagem | Em celular fraco, a página demora a responder ao toque | 01/02: abrir com render estático e trocar pelo 3D depois do primeiro toque ou quando o navegador estiver ocioso | **Regra:** primeira tela sem WebGL bloqueante. O 3D entra depois do LCP |
+| 2 | CLS de 0,094 na 03 | `layout-shifts`: `.hero-grid` desloca 0,067 quando a fonte da palavra elástica carrega | Conteúdo pula enquanto a pessoa lê | Reservar a altura da palavra no CSS antes da fonte carregar | Testar CLS no Lighthouse antes de entregar (meta < 0,05) |
+| 3 | Contraste insuficiente | `.eyebrow` e `.fine` (01) e um `<span>` de pílula (02) abaixo de 4,5:1 | Leitura difícil e falha de acessibilidade | Escurecer o texto auxiliar | Lighthouse com acessibilidade 100 como critério de saída |
+| 4 | Sem `robots.txt` nem sitemap | Auditoria de SEO | Na publicação real, prejudica a indexação | Incluir `robots.txt` (bloqueando na demo) e sitemap no build final | Checklist de publicação |
+| 5 | Fotografia | Nenhuma demo tem foto real (rede bloqueia bancos e Instagram) | Percepção de valor limitada; a nota de fotografia ficou em 5 | Renders próprios e lista de fotos a produzir; pedir as fotos na primeira conversa | Liberar um banco de imagens no ambiente |
+| 6 | Logotipos provisórios | As três usam marca tipográfica improvisada | Cliente pode estranhar a marca "redesenhada" | Deixar explícito na apresentação que a marca entra depois | Pedir o logo junto com as fotos |
+| 7 | (hipótese) Desempenho em celular real | Não há GPU real aqui | O FPS do 3D é desconhecido | Testar num Android intermediário | Pendência fixa até ter um aparelho de teste |
+
+### Padrões criativos já usados (consolidado)
+- **01:** papel creme, serifa editorial, texto à esquerda com 3D fixo à direita, configurador de acabamento.
+- **02:** veludo escuro, Bodoni monumental atrás do objeto, travessia pelo anel, gravação ao vivo, medidor.
+- **03:** claro e vibrante, tipografia elástica, código de cores funcional, física de mola, prévia ao vivo da mensagem.
+- **Comuns a evitar:** formulário em pílulas, FAQ em lista, CTA fixo no rodapé do celular, faixa de demonstração no topo (obrigatória, mas pode ser mais elegante).
+
+---
+
+## Demo 04: Box 21 Tecnologia Automotiva · "Freio aberto" (refs. ThreadLab + "48")
+
+**Processo com referências:** skill Image to Code indisponível (verificada). Fiz a análise manual em `referencias/2026-10-21/ANALISE.md`, a implementação, a comparação lado a lado e os ajustes (ex.: adicionei o halo atmosférico que faltava em relação à ref. B).
+
+**Evolução concreta em relação às demos anteriores:**
+- **Primeira linguagem "técnica/HUD":** Archivo expandida, IBM Plex Mono, lima funcional. Nenhum padrão das demos 01 a 03 se repete.
+- **3D com utilidade dupla:** vista explodida *explica* as peças e a frenagem *demonstra* (aquecimento e desaceleração).
+- **Conversão nova:** diagnóstico por sintoma, com prévia em formato de **ordem de serviço** e aviso automático de guincho.
+- **Melhor desempenho do portfólio:** 98 no Lighthouse mobile, TBT 0, CLS 0, com o padrão "render primeiro, 3D na interação".
+- **Erros persistentes corrigidos nas demos antigas:** 02 de 65 para 97 (mesmo padrão), 01 e 02 com acessibilidade de 96 para 100, CLS da 03 de 0,094 para 0,028.
+
+| Critério | Nota | Evidência |
+|---|---|---|
+| Originalidade | 9 | Linguagem HUD e freio interativo com aquecimento; sem repetir técnicas anteriores |
+| Qualidade tipográfica | 9 | Archivo 125% no wordmark, 88% no H1, mono nos dados; hierarquia clara (ver capturas) |
+| Direção de arte | 9 | Duas referências combinadas: abertura escura e seção editorial clara com numeral "21" |
+| Fotografia | 5 | Ainda sem fotos reais (rede bloqueada); renders rotulados. Lista de fotos no README |
+| Profundidade de conteúdo | 7 | Endereço, telefones, CNPJ, especialidade, perguntas. **Faltam horário e lista de serviços confirmados** |
+| Adequação ao segmento | 9 | O freio é a peça de segurança mais compreensível para o cliente; foco em sintoma, endereço e telefone |
+| Animações | 8 | Explodir, aquecer, desacelerar e etiquetas projetadas. Revelações discretas |
+| 3D | 8 | Disco convincente (anisotropia, furos, aletas); pinça simplificada, sem pistões |
+| Clareza comercial | 9 | H1 visível sem rolar nas 3 larguras (testado); CTA de agendamento e ligação em todas as seções |
+| Credibilidade | 7 | CNPJ e endereço da Receita; sem avaliações recentes, então não exibidas |
+| Responsividade | 9 | 390, 820 e 1440 px sem rolagem lateral, menu móvel testado |
+| Desempenho | 9 | Lighthouse 98, TBT 0, CLS 0 (GPU emulada; aparelho real pendente) |
+| Funcionalidade | 9 | 48/48 checagens. WhatsApp usa número a confirmar; telefones funcionam |
+| Acabamento | 8 | Etiquetas sobrepostas no celular foram corrigidas; a pinça ainda é a peça menos refinada |
+
+### Erros encontrados e corrigidos
+1. A ordem de serviço ficou ilegível (lima sobre papel claro) por herança de `.diag .mono`. Agora tem cor explícita no `.ticket`.
+2. As etiquetas da vista explodida se sobrepunham no celular. Agora há deslocamento por etiqueta.
+3. `[hidden]` era vencido por `display: inline-flex` e o botão de freio aparecia sem WebGL. Agora há regra global.
+4. A câmera cortava a pinça, e o decalque ficava numa face invisível e na direção errada.
+
+### Regras novas para a 05
+- **"Render primeiro, 3D na interação"** é o padrão para qualquer abertura com WebGL.
+- Lighthouse (mobile) faz parte da saída: acessibilidade 100, CLS < 0,05, desempenho ≥ 90.
+- Toda classe utilitária de cor (como `.mono`) precisa ser checada em fundo claro **e** escuro.

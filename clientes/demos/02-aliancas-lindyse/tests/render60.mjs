@@ -22,6 +22,7 @@ await page.addInitScript(() => {
 let vt = 1000
 const tick = (js = '') => { vt += DT; return page.evaluate(`${js};window.__tick(${vt})`) }
 await page.goto(process.env.URL || 'http://localhost:4174/', { waitUntil: 'load' })
+await page.evaluate(() => window.__boot()) // o 3D sobe na primeira interação
 for (let i = 0; i < 3000; i++) {
   await tick()
   if (await page.evaluate(() => document.documentElement.classList.contains('webgl-ready'))) break

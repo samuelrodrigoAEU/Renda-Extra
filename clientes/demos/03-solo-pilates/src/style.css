@@ -50,7 +50,7 @@ p { margin: 0 0 1rem; }
 /* ---------- Herói ---------- */
 .hero { padding: clamp(1rem, 3vw, 2.5rem) 0 clamp(3rem, 7vw, 6rem); }
 .word-box { padding: 0 var(--pad); overflow: hidden; }
-.word { display: block; width: max-content; font-family: var(--display); line-height: 0.78; letter-spacing: -0.035em; white-space: nowrap; cursor: ew-resize; user-select: none; touch-action: pan-y; padding-bottom: 0.04em; color: var(--ink); }
+.word { font-size: min(calc((100vw - 2 * var(--pad)) * 0.258), 36vh); font-stretch: 105%; font-weight: 611; display: block; width: max-content; font-family: var(--display); line-height: 0.78; letter-spacing: -0.035em; white-space: nowrap; cursor: ew-resize; user-select: none; touch-action: pan-y; padding-bottom: 0.04em; color: var(--ink); }
 .word.grab { cursor: grabbing; }
 .word-hint { padding: 0 var(--pad); font-family: var(--serif); font-style: italic; color: var(--muted); font-size: 0.9rem; margin: 0.6rem 0 0; }
 .hero-grid { display: grid; grid-template-columns: 5fr 7fr; gap: clamp(1.5rem, 4vw, 5rem); align-items: end; padding: clamp(1.5rem, 3vw, 3rem) var(--pad) 0; max-width: 96rem; margin: 0 auto; }

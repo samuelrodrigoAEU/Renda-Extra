@@ -168,21 +168,29 @@ async function boot() {
   scene.setPortal(portalP)
   addEventListener('scroll', placeCanvas, { passive: true })
   placeCanvas()
-  requestAnimationFrame(() => document.documentElement.classList.add('webgl-ready'))
+  requestAnimationFrame(() => { document.documentElement.classList.add('webgl-ready'); poster(false) })
   ;(window as unknown as { __scene: SceneApi }).__scene = scene
 }
 
+// A abertura mostra o render estático da própria cena; o 3D só sobe na primeira interação.
+// Antes, o WebGL subia no carregamento e bloqueava a página (TBT de 11,6 s no Lighthouse).
+let booting: Promise<void> | null = null
+const go = () => (booting ??= boot().catch((err) => { console.warn('3D indisponível, usando imagem estática.', err); fallback() }))
+;(window as unknown as { __boot: () => Promise<void> }).__boot = go
 if (hasWebGL()) {
-  const go = () => boot().catch((err) => { console.warn('3D indisponível, usando imagem estática.', err); fallback() })
-  'requestIdleCallback' in window ? requestIdleCallback(go, { timeout: 500 }) : setTimeout(go, 150)
+  poster(true)
+  for (const ev of ['pointermove', 'touchstart', 'scroll', 'keydown']) addEventListener(ev, () => go(), { once: true, passive: true })
 } else fallback()
 
-function fallback() {
-  document.documentElement.classList.add('no-webgl')
+function poster(on: boolean) {
   // URL absoluta: url() relativo dentro de variável CSS resolveria a partir da pasta do CSS
   const img = (f: string) => `url("${new URL(`renders/${f}`, location.href).href}") center / cover`
-  slotHero.style.background = img('og.jpg')
-  slotHero.style.zIndex = '-1' // atrás do título, como o 3D faria com o fundo
-  slotEngrave.style.background = img('engrave.jpg')
+  slotHero.style.background = on ? img('og.jpg') : ''
+  slotHero.style.zIndex = on ? '-1' : '' // atrás do título, como o 3D faria com o fundo
+  slotEngrave.style.background = on ? img('engrave.jpg') : ''
+}
+function fallback() {
+  document.documentElement.classList.add('no-webgl')
+  poster(true)
 }
 syncEngrave()

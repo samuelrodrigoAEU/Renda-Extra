@@ -19,5 +19,11 @@
 **O que funciona hoje:** tudo, menos o número do WhatsApp (pendente). Os telefones já ligam.
 **Mensagens e proposta:** `vendas/mensagem-solo.md`.
 
+## 4. Box 21 Tecnologia Automotiva: "Freio aberto" (PRONTA)
+**Problema:** oficina de importados desde 2004 sem site nem Instagram. No Google aparecem diretórios antigos com o endereço errado.
+**O que a demo faz:** um freio 3D de alto desempenho que o visitante desmonta (vista explodida com etiquetas) e aquece segurando "frear". Seção editorial com o "21" gigante. Diagnóstico guiado por sintoma que gera uma ordem de serviço e envia pelo WhatsApp, com aviso de guincho.
+**Funciona hoje:** tudo, com WhatsApp no celular público (confirmar). Lighthouse 98.
+**Mensagens e proposta:** `vendas/mensagem-box21.md`.
+
 ## Descartado: GAW Joalheria Autoral
 Fica em São Paulo e tem site próprio. Ver `clientes/demos/_descartados/`.

@@ -155,7 +155,7 @@ input[type='range']::-moz-range-track { height: 2px; background: var(--ink); }
 input[type='range']::-webkit-slider-thumb { -webkit-appearance: none; width: 1.4rem; height: 1.4rem; margin-top: -0.65rem; border-radius: 50%; background: var(--porcelain); border: 2px solid var(--ink); }
 input[type='range']::-moz-range-thumb { width: 1.2rem; height: 1.2rem; border-radius: 50%; background: var(--porcelain); border: 2px solid var(--ink); }
 .sz-visual { position: relative; height: 22rem; display: grid; place-items: center; }
-.card-outline { --w: 324px; position: absolute; width: var(--w); aspect-ratio: 85.6 / 53.98; border: 1.5px dashed var(--muted); border-radius: calc(var(--w) * 0.037); display: flex; align-items: flex-end; padding: 0.5rem 0.7rem; font-size: 0.7rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--muted); }
+.card-outline { --w: 324px; position: absolute; width: var(--w); aspect-ratio: 85.6 / 53.98; border: 1.5px dashed var(--muted); border-radius: calc(var(--w) * 0.037); display: flex; align-items: flex-end; padding: 0.5rem 0.7rem; font-size: 0.7rem; letter-spacing: 0.14em; text-transform: uppercase; color: #5e5056; }
 .ring-outline { --d: 66px; position: relative; width: var(--d); height: var(--d); border-radius: 50%; border: 2px solid var(--wine); box-shadow: 0 0 0 9px rgba(122, 34, 50, 0.1); transition: width 0.15s, height 0.15s; }
 .sz-result { border-left: 1px solid var(--line); padding-left: clamp(1rem, 3vw, 3rem); }
 .aro { font-family: var(--display); font-size: clamp(6rem, 11vw, 10rem); line-height: 0.8; margin: 0 0 0.6rem; color: var(--wine); }

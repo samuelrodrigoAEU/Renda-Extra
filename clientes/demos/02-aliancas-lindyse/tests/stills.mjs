@@ -10,6 +10,7 @@ const browser = await chromium.launch({ args: ['--use-angle=swiftshader', '--ena
 for (const [name, w, h] of shots) {
   const page = await browser.newPage({ viewport: { width: w, height: h }, deviceScaleFactor: 2 })
   await page.goto(URL, { waitUntil: 'networkidle' })
+  await page.evaluate(() => window.__boot())
   await page.waitForFunction(() => window.__scene, null, { timeout: 30000 })
   if (name === 'engrave') {
     await page.evaluate(() => { const s = document.querySelector('#slot-engrave'); s.style.cssText = 'position:fixed;inset:0;z-index:999'; s.append(document.querySelector('#gl')); window.__scene.resize() })

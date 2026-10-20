@@ -2,7 +2,7 @@
   --paper: #f1ece4;
   --paper-2: #e8e1d6;
   --ink: #1c1b19;
-  --muted: #6b645b;
+  --muted: #5a544c;
   --line: rgba(28, 27, 25, 0.14);
   --accent: #8c4a2f;
   --accent-ink: #fbf7f1;
@@ -183,7 +183,8 @@ section:not(.stage) { padding: clamp(5rem, 11vw, 10rem) 0; }
 .faq details p { color: var(--muted); max-width: 42rem; padding-bottom: 1.2rem; }
 
 .contact { background: var(--dark); color: #ece6dc; }
-.contact .eyebrow, .contact .fine, .contact .addr { color: #9d958a; }
+.contact .eyebrow, .contact .fine, .contact .addr { color: #b3aa9e; }
+.foot .fine { color: #b3aa9e; }
 .contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(2rem, 6vw, 7rem); align-items: start; }
 .addr { margin-top: 2rem; font-size: 0.9rem; }
 form { display: grid; gap: 1.1rem; background: #201e1b; padding: clamp(1.4rem, 3vw, 2.4rem); border-radius: 10px; border: 1px solid rgba(255,255,255,0.08); }
@@ -206,7 +207,7 @@ legend { font-size: 0.8rem; color: #b3aa9e; margin-bottom: 0.5rem; width: 100%; 
 .contact .btn:hover { color: var(--accent-ink); }
 .form-error { color: #f0a17c; font-size: 0.85rem; margin: 0; }
 
-.foot { background: var(--dark); color: #9d958a; padding: 4rem 0 6rem; border-top: 1px solid rgba(255,255,255,0.08); }
+.foot { background: var(--dark); color: #b3aa9e; padding: 4rem 0 6rem; border-top: 1px solid rgba(255,255,255,0.08); }
 .foot-grid { display: flex; justify-content: space-between; align-items: end; gap: 2rem; flex-wrap: wrap; }
 .foot-big { font-family: var(--serif); font-size: clamp(2.4rem, 5vw, 4.4rem); color: #ece6dc; line-height: 1; margin: 0; }
 .foot-big em { color: #d39a78; }

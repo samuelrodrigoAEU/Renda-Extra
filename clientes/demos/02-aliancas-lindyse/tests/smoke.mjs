@@ -15,6 +15,7 @@ for (const [label, vp] of [['desktop', { width: 1440, height: 900 }], ['mobile',
   page.on('console', (m) => m.type() === 'error' && errors.push(m.text()))
   page.on('pageerror', (e) => errors.push(e.message))
   await page.goto(URL, { waitUntil: 'networkidle' })
+  await page.mouse.move(vp.width / 2, vp.height / 2) // o 3D sobe na primeira interação
   await page.waitForFunction(() => document.documentElement.classList.contains('webgl-ready'), null, { timeout: 30000 }).catch(() => {})
   ok(`${label}: WebGL`, await page.evaluate(() => document.documentElement.classList.contains('webgl-ready')))
   const go = async (y, name) => { await page.evaluate((y) => scrollTo({ top: y, behavior: 'instant' }), y); await page.waitForTimeout(WAIT); await page.screenshot({ path: `${OUT}/${label}-${name}.png` }) }
