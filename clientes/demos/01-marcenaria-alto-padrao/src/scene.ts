@@ -10,7 +10,7 @@ type Key = { cam: THREE.Vector3; look: THREE.Vector3; doors: number; drawer: num
 
 const KEYS: Key[] = [
   { cam: new THREE.Vector3(2.6, 1.55, 3.6), look: new THREE.Vector3(0.05, 0.72, 0), doors: 0, drawer: 0, spin: 0 },
-  { cam: new THREE.Vector3(0.9, 1.25, 3.0), look: new THREE.Vector3(0.35, 0.5, 0), doors: 1, drawer: 0, spin: 0 },
+  { cam: new THREE.Vector3(0.6, 1.35, 3.5), look: new THREE.Vector3(-0.05, 0.5, 0), doors: 1, drawer: 0, spin: 0 },
   { cam: new THREE.Vector3(-1.9, 1.75, 2.5), look: new THREE.Vector3(-0.45, 0.55, 0.15), doors: 0.1, drawer: 1, spin: 0 },
   { cam: new THREE.Vector3(1.9, 1.35, 3.9), look: new THREE.Vector3(0, 0.8, 0), doors: 0, drawer: 0, spin: 1 }
 ]

@@ -1,6 +1,6 @@
 // Renderiza o vídeo da demo quadro a quadro em tempo virtual (60 fps sem travamentos,
-// independente da velocidade da GPU). Requer chrome-headless-shell (HeadlessExperimental.beginFrame).
-// Uso: URL=http://localhost:4173/ HEADLESS_SHELL=... node tests/render60.mjs saida.mp4 [segundos-max]
+// independente da velocidade da GPU): rAF e performance.now avançam 1/60 s por quadro; CSS acompanha via Animation.setPlaybackRate.
+// Uso: npx vite preview --port 4173 & node tests/render60.mjs video/saida.mp4 [segundos-max]
 import { chromium } from 'playwright'
 import { spawn } from 'node:child_process'
 import { mkdtempSync } from 'node:fs'
@@ -13,57 +13,34 @@ const FPS = 60, DT = 1000 / FPS
 const W = Number(process.env.W || 1280), H = Number(process.env.H || 720), DPR = Number(process.env.DPR || 1.5)
 
 const browser = await chromium.launch({
-  executablePath: process.env.HEADLESS_SHELL,
-  headless: true,
-  args: [
-    '--enable-begin-frame-control', '--run-all-compositor-stages-before-draw', '--disable-threaded-animation',
-    '--disable-threaded-scrolling', '--disable-checker-imaging', '--use-angle=swiftshader', '--enable-unsafe-swiftshader',
-    '--ignore-gpu-blocklist', '--hide-scrollbars'
-  ]
+  args: ['--use-angle=swiftshader', '--enable-unsafe-swiftshader', '--ignore-gpu-blocklist', '--hide-scrollbars']
 })
-console.log('launched')
-const bcdp = await browser.newBrowserCDPSession()
-const before = new Set((await bcdp.send('Target.getBrowserContexts')).browserContextIds)
-const ctx = await browser.newContext({ viewport: null })
-const ctxId = (await bcdp.send('Target.getBrowserContexts')).browserContextIds.find((id) => !before.has(id))
-const pageP = ctx.waitForEvent('page')
-await bcdp.send('Target.createTarget', { url: 'about:blank', browserContextId: ctxId, enableBeginFrameControl: true, width: W, height: H })
-const page = await pageP
-console.log('target ok')
-const cdp = await ctx.newCDPSession(page)
-await cdp.send('Emulation.setDeviceMetricsOverride', { width: W, height: H, deviceScaleFactor: DPR, mobile: false })
+const page = await browser.newPage({ viewport: { width: W, height: H }, deviceScaleFactor: DPR })
+const cdp = await page.context().newCDPSession(page)
+await cdp.send('Animation.enable')
 
-// Relógio virtual: performance.now acompanha o timestamp do frame
+// Relógio virtual: rAF e performance.now só avançam quando o roteiro manda (__tick)
 await page.addInitScript(() => {
-  let vt = 0
-  const raf = window.requestAnimationFrame.bind(window)
-  window.requestAnimationFrame = (cb) => raf((t) => { vt = t; cb(t) })
+  let vt = 0, id = 0
+  let q = new Map()
+  window.requestAnimationFrame = (cb) => { q.set(++id, cb); return id }
+  window.cancelAnimationFrame = (i) => q.delete(i)
   performance.now = () => vt
+  window.__tick = (t) => { vt = t; const cbs = q; q = new Map(); for (const cb of cbs.values()) cb(t) }
 })
 
-let ticks = 100000
-async function frame(shot) {
-  ticks += DT
-  const r = await cdp.send('HeadlessExperimental.beginFrame', {
-    frameTimeTicks: ticks, interval: DT, noDisplayUpdates: false,
-    ...(shot ? { screenshot: { format: 'jpeg', quality: 93 } } : {})
-  })
-  return r.screenshotData
-}
+let vt = 1000
+async function tick(js = '') { vt += DT; await page.evaluate(`${js};window.__tick(${vt})`) }
 
-const nav = page.goto(process.env.URL || 'http://localhost:4173/', { waitUntil: 'load' })
-let pumping = true
-const pump = (async () => { while (pumping) { await frame(false).catch(() => {}); await new Promise((r) => setTimeout(r, 5)) } })()
-await nav
-console.log('loaded')
-for (let i = 0; i < 4000; i++) {
+await page.goto(process.env.URL || 'http://localhost:4173/', { waitUntil: 'load' })
+for (let i = 0; i < 2000; i++) {
+  await tick()
   if (await page.evaluate(() => document.documentElement.classList.contains('webgl-ready'))) break
-  await new Promise((r) => setTimeout(r, 50))
+  await page.waitForTimeout(30)
 }
-pumping = false
-await pump
 console.log('webgl ready')
-{ const s0 = Date.now(); for (let i = 0; i < 90; i++) await frame(false); console.log("estab ms/frame", (Date.now() - s0) / 90) } // estabiliza (fade-in do canvas)
+for (let i = 0; i < 60; i++) await tick()
+await page.waitForTimeout(1600) // fade-in do canvas (CSS, tempo real)
 
 const m = await page.evaluate(() => {
   const top = (s) => document.querySelector(s).getBoundingClientRect().top + scrollY
@@ -100,7 +77,7 @@ const TOTAL = Math.min(50, LIMIT)
 const ff = spawn('ffmpeg', ['-v', 'error', '-y', '-f', 'image2pipe', '-framerate', String(FPS), '-c:v', 'mjpeg', '-i', '-',
   '-c:v', 'libx264', '-preset', 'slow', '-crf', '18', '-pix_fmt', 'yuv420p', '-movflags', '+faststart', OUT], { stdio: ['pipe', 'inherit', 'inherit'] })
 
-let last = null, ev = 0
+let ev = 0, prevMs = 500
 const N = Math.round(TOTAL * FPS)
 const t0 = Date.now()
 for (let f = 0; f < N; f++) {
@@ -113,10 +90,13 @@ for (let f = 0; f < N; f++) {
     const n = Math.max(0, Math.min(text.length, Math.floor((t - ts) * 14)))
     if (t >= ts && t < ts + text.length / 14 + 0.1) js += `document.querySelector('[name=${name}]').value=${JSON.stringify(text.slice(0, n))};`
   }
-  await page.evaluate(js)
-  const data = await frame(true)
-  if (data) last = Buffer.from(data, 'base64')
-  if (last) ff.stdin.write(last)
+  // CSS (transições) roda em tempo real: ajusta a velocidade para casar com o tempo virtual
+  const rate = Math.min(1, Math.max(0.005, DT / prevMs))
+  await cdp.send('Animation.setPlaybackRate', { playbackRate: rate })
+  const it0 = Date.now()
+  await tick(js + `;dispatchEvent(new Event('scroll'))`)
+  ff.stdin.write(await page.screenshot({ type: 'jpeg', quality: 92 }))
+  prevMs = Math.max(1, Date.now() - it0)
   if (f % 60 === 0) console.log(`frame ${f}/${N} (${((Date.now() - t0) / 1000).toFixed(0)}s)`)
 }
 ff.stdin.end()
