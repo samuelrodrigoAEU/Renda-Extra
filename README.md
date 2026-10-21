@@ -16,6 +16,7 @@ clientes/
     02-aliancas-lindyse/         "O Estojo": travessia pelo anel, gravação 3D ao vivo, medidor de aro
     03-solo-pilates/             "Tensão": tipografia elástica, reformer 3D com física de molas, agendamento
     04-box21-oficina/            "Freio aberto": HUD, freio 3D explodido e aquecendo, diagnóstico guiado
+    05-leude-barbosa/            "Acetinado": folha de papel de arroz que absorve o brilho (WebGL2), ficha com mapa de zonas
     _descartados/                conceitos descartados, com o motivo
   autorizados/          só depois de autorização por escrito da empresa
   contratados/          só depois da entrada paga

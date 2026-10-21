@@ -25,5 +25,16 @@
 **Funciona hoje:** tudo, com WhatsApp no celular público (confirmar). Lighthouse 98.
 **Mensagens e proposta:** `vendas/mensagem-box21.md`.
 
+## 5. Leude Barbosa Estética: "Acetinado" (PRONTA)
+**Problema:** a esteticista tem um método próprio para pele oleosa citado em matéria, mas não foi localizado um site que explique esse método.
+**O que a demo faz:**
+- na abertura, uma folha de papel de arroz que se arrasta sobre uma amostra acetinada, absorve o brilho e para sozinha no equilíbrio ("Equilibrar não é secar");
+- o método em quatro passos, sem números nem promessas;
+- o nome em relevo seco;
+- uma ficha com mapa de zonas que monta a mensagem do WhatsApp.
+
+**Funciona hoje:** tudo, mas o WhatsApp é provável e **bloqueia a publicação até ser confirmado**. Lighthouse 96.
+**Mensagens e proposta:** `vendas/mensagem-leude.md`.
+
 ## Descartado: GAW Joalheria Autoral
 Fica em São Paulo e tem site próprio. Ver `clientes/demos/_descartados/`.

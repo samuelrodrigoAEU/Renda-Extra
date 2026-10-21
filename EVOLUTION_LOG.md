@@ -215,3 +215,53 @@ Ferramentas: Lighthouse 12 (mobile, Chromium com GPU emulada por software, que *
 - **"Render primeiro, 3D na interação"** é o padrão para qualquer abertura com WebGL.
 - Lighthouse (mobile) faz parte da saída: acessibilidade 100, CLS < 0,05, desempenho ≥ 90.
 - Toda classe utilitária de cor (como `.mono`) precisa ser checada em fundo claro **e** escuro.
+
+---
+
+## Demo 05: Leude Barbosa Estética · "Acetinado" (nova diretriz: sem títulos artificiais)
+
+**Processo:**
+- Consultei o log e gerei o conceito com um workflow: 3 propostas independentes e 1 juiz.
+- Construí, testei e fiz uma revisão adversarial. Não houve referências enviadas para este projeto, então a skill Image to Code não se aplicou.
+
+**Evolução concreta em relação às demos anteriores:**
+- **Sem nenhum título de seção, eyebrow ou numeração.** A hierarquia vem de:
+  - voz serifada contra texto corrido;
+  - sulcos em relevo seco (nenhuma troca de fundo);
+  - escada de passos por recuo;
+  - o nome em relevo;
+  - o "T-4" monumental.
+- **Ideia memorável inédita:** a folha de papel de arroz absorve o brilho e **para sozinha** no equilíbrio. O gesto ensina o conceito do método ("Equilibrar não é secar") sem prometer resultado.
+- **WebGL2 cru**, sem Three.js:
+  - o relevo e os poros são calculados uma vez numa textura;
+  - a luz fica sob demanda e a máscara é lida em CPU.
+- **Primeiro quadro em CSS:** desempenho 96 no Lighthouse mobile, TBT 0, CLS 0.
+
+| Critério | Nota | Evidência |
+|---|---|---|
+| Originalidade | 9 | Folha que absorve e para no equilíbrio; nada repetido das demos 01 a 04 |
+| Qualidade tipográfica | 9 | Albert Sans 320 no H1 em 3 linhas fixas (testado), Newsreader com tamanho óptico na voz |
+| Direção de arte | 9 | Paleta caulim e grafite, um único reflexo; sulcos e relevo seco no lugar de blocos |
+| Fotografia | 4 | Sem fotos (rede bloqueada). Superfícies geradas e rotuladas; lista de fotos no README |
+| Profundidade de conteúdo | 7 | Só o que a matéria confirma; faltam horário, duração da análise e WhatsApp confirmado |
+| Adequação ao segmento | 9 | Fala de equilíbrio, não de "secar"; sem antes e depois nem promessa |
+| Animações | 8 | Capilaridade da mancha, reflexo único nos títulos, revelação só abaixo da dobra |
+| 3D / WebGL | 8 | Janela refletida nítida quando oleosa e desfocada quando tratada, mais faíscas; o fosco ainda é sutil em telas pequenas |
+| Clareza comercial | 9 | CTA visível sem rolar em 390, 820 e 1440 px (testado); a ficha monta a mensagem ao vivo |
+| Credibilidade | 7 | Matéria citada com link; sem avaliações verificadas, então nada exibido |
+| Responsividade | 9 | Sem rolagem lateral; deslizar na amostra rola a página, e arrastar a folha não rola (testado) |
+| Desempenho | 9 | Lighthouse 96, TBT 0, CLS 0 (GPU emulada) |
+| Funcionalidade | 9 | 57/57 checagens (sem WebGL, movimento reduzido, toque, rascunho) |
+| Acabamento | 8 | Shader refeito 3 vezes até sair do aspecto "metal pontilhado" |
+
+### Erros encontrados e corrigidos
+1. O primeiro shader tinha poros grandes e regulares e virou um "metal pontilhado". Refeito com poros de raio e presença aleatórios, relevo largo e ombro de tom (sem estourar).
+2. O equilíbrio dependia de 12 s de pressão medidos por quadro. Em aparelho lento ficava 2× mais longo. Agora conta 7 s de tempo real, ou 40% da área tratada.
+3. A demonstração automática contava como "primeira interação" e trocava a instrução. Agora ela não conta.
+4. O boot do WebGL depois do LCP dava TBT de 1.300 ms (desempenho 62). Com o padrão da regra (3D na interação), o reflexo 2D preguiçoso e as máscaras em CPU, o desempenho foi a 96 e o TBT a 0.
+5. A identificação "conceito independente" só aparecia no rodapé. Agora também aparece sob o nome, no topo.
+
+### Regras novas para a 06
+- O teste de toque usa `Input.dispatchTouchEvent`. O `synthesizeScrollGesture` não rola no headless e dá falso negativo.
+- Qualquer contagem de tempo de interação usa tempo real, não `dt` limitado por quadro.
+- O shader é aprovado por uma captura comparativa (metade tratada, metade original) antes do teste completo.
