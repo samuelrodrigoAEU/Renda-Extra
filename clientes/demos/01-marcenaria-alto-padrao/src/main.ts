@@ -136,8 +136,9 @@ function onScroll() {
 window.addEventListener('scroll', onScroll, { passive: true })
 onScroll()
 
-if (hasWebGL()) {
-  const boot = () => loadScene().then((s) => {
+// sem criar contexto na carga: a checagem real (cara) só acontece no primeiro gesto
+if ('WebGLRenderingContext' in window) {
+  const boot = () => (hasWebGL() ? loadScene() : Promise.reject(new Error('sem WebGL'))).then((s) => {
     scene = s
     s.setFinish(current)
     s.setProgress(stageProgress())
@@ -147,8 +148,10 @@ if (hasWebGL()) {
     console.warn('3D indisponível, usando visual estático.', err)
     document.documentElement.classList.add('no-webgl')
   })
-  // Carrega o 3D depois do primeiro paint para não atrasar o texto
-  'requestIdleCallback' in window ? requestIdleCallback(boot, { timeout: 600 }) : setTimeout(boot, 200)
+  // Render primeiro, 3D na interação: o pôster (o próprio 3D congelado) fica até o primeiro gesto
+  const first = ['pointerdown', 'pointermove', 'touchstart', 'wheel', 'keydown', 'scroll'] as const
+  const onFirst = () => { for (const e of first) removeEventListener(e, onFirst); boot() }
+  for (const e of first) addEventListener(e, onFirst, { passive: true })
 } else {
   document.documentElement.classList.add('no-webgl')
 }

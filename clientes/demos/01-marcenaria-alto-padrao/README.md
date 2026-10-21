@@ -37,6 +37,7 @@ Todos os dados do cliente ficam em `src/config.ts`: nome, cidade, ano de fundaç
 - Fontes self-hosted (Fontsource, licença OFL): Instrument Serif e Manrope.
 
 ## Desempenho e acessibilidade
+- **Render primeiro, 3D na interação:** a abertura mostra um pôster WebP (o próprio 3D congelado, 14 KB no desktop e 10 KB no celular, gerado por `tests/poster.mjs`). O Three.js só carrega no primeiro gesto, e o teste do contexto WebGL também. Lighthouse mobile: **desempenho 100** (antes 49), acessibilidade 100, TBT 0, CLS 0.
 - O 3D só renderiza quando algo muda (scroll, cursor, acabamento) e pausa fora da tela.
 - **Qualidade adaptativa:** se o aparelho não sustentar cerca de 22 fps por 20 quadros, reduz a resolução (DPR 1) e o mapa de sombra.
 - Sem WebGL, a página exibe um fundo estático (`.no-webgl`), sem nenhuma função perdida.

@@ -265,3 +265,10 @@ Ferramentas: Lighthouse 12 (mobile, Chromium com GPU emulada por software, que *
 - O teste de toque usa `Input.dispatchTouchEvent`. O `synthesizeScrollGesture` não rola no headless e dá falso negativo.
 - Qualquer contagem de tempo de interação usa tempo real, não `dt` limitado por quadro.
 - O shader é aprovado por uma captura comparativa (metade tratada, metade original) antes do teste completo.
+
+### Correção retroativa na demo 01 (21/10)
+A pendência da auditoria (TBT de 23,6 s, desempenho 49) foi resolvida com o padrão "render primeiro, 3D na interação":
+- a abertura usa um pôster gerado do próprio 3D;
+- o Three.js e a checagem de contexto WebGL só acontecem no primeiro gesto.
+
+Resultado no Lighthouse mobile: **desempenho 100**, TBT 0, CLS 0. As cinco demos agora seguem a mesma regra.

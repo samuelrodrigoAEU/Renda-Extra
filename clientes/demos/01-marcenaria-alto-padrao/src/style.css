@@ -90,7 +90,10 @@ p { margin: 0 0 1rem; }
     linear-gradient(180deg, var(--paper) 0%, var(--paper-2) 100%);
 }
 .webgl-ready .poster { opacity: 0; }
-.no-webgl .poster::after {
+/* pôster = o próprio 3D congelado; o WebGL só sobe no primeiro gesto */
+.poster { background: url('./renders/hero-m.webp') center / cover no-repeat, var(--paper); }
+@media (min-width: 700px) { .poster { background-image: url('./renders/hero-d.webp'); } }
+.no-webgl .poster::after { display: none;
   content: ''; position: absolute; right: 12%; top: 26%; width: 34%; aspect-ratio: 1.3;
   border-radius: 6px; background: repeating-linear-gradient(90deg, #a8794d 0 22%, #8f6440 22% 22.6%);
   box-shadow: 0 40px 60px -30px rgba(0,0,0,0.35);
