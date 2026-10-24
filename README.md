@@ -20,6 +20,7 @@ clientes/
     _descartados/                conceitos descartados, com o motivo
   autorizados/          só depois de autorização por escrito da empresa
   contratados/          só depois da entrada paga
+produto-digital/        Conta Doce: produto low-ticket para Meta Ads (pesquisa, planilha, página, vídeos, plano de teste; ver relatorios/RELATORIO.md)
 vendas/
   playbook.md           funil, mensagens, roteiro de reunião, objeções, entrega, ética
   precos-e-margem.md    pacotes, custos e fórmula de margem

@@ -1,0 +1,106 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Conta Doce · planilha de precificação para confeitaria</title>
+<meta name="description" content="Planilha que calcula o custo real e o preço sugerido de cada doce seu, com a sua hora, os gastos fixos e a taxa da maquininha. Celular ou computador.">
+<!-- PIXEL DA META: cole aqui o código base do seu Pixel (Gerenciador de Eventos). O evento Purchase deve ser disparado pela plataforma de checkout, não por esta página. -->
+<style>
+  :root { --creme: #FFF8EF; --tinta: #2B2420; --cinza: #6F645C; --rosa: #C8473D; --rosa-claro: #F6D7D2; --verde: #DDEFD9; --borda: #EADFD5; }
+  * { box-sizing: border-box; }
+  body { margin: 0; background: var(--creme); color: var(--tinta); font: 400 18px/1.6 system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif; }
+  main { max-width: 720px; margin: 0 auto; padding: 0 20px; }
+  h1 { font-size: clamp(2rem, 7vw, 3rem); line-height: 1.08; letter-spacing: -.02em; margin: 48px 0 16px; }
+  h1 em { font-style: normal; color: var(--rosa); }
+  h2 { font-size: 1.6rem; line-height: 1.2; margin: 56px 0 14px; letter-spacing: -.01em; }
+  p { margin: 0 0 14px; }
+  .lead { font-size: 1.15rem; color: var(--cinza); }
+  .botao { display: inline-block; background: var(--tinta); color: var(--creme); padding: 18px 28px; border-radius: 999px; font-weight: 700; text-decoration: none; font-size: 1.05rem; }
+  .botao:hover { background: #45392f; }
+  .botao:focus-visible, a:focus-visible { outline: 3px solid var(--rosa); outline-offset: 3px; }
+  .nota { font-size: .9rem; color: var(--cinza); }
+  figure { margin: 22px 0; background: #fff; border: 1px solid var(--borda); border-radius: 16px; padding: 12px; }
+  figure img { width: 100%; height: auto; display: block; border-radius: 8px; }
+  figcaption { font-size: .88rem; color: var(--cinza); margin-top: 8px; }
+  ol.passos { padding-left: 1.2em; } ol.passos li { margin-bottom: 10px; }
+  ul.lista { padding-left: 1.1em; } ul.lista li { margin-bottom: 6px; }
+  .conta { background: #fff; border: 1px solid var(--borda); border-radius: 16px; padding: 20px 22px; }
+  .conta table { width: 100%; border-collapse: collapse; font-size: 1rem; }
+  .conta td { padding: 6px 0; border-bottom: 1px solid var(--borda); } .conta td:last-child { text-align: right; font-variant-numeric: tabular-nums; }
+  .conta tr.total td { font-weight: 800; border-bottom: 0; }
+  .oferta { background: #fff; border: 2px solid var(--tinta); border-radius: 20px; padding: 26px; margin: 40px 0; }
+  .preco { font-size: 2.6rem; font-weight: 800; letter-spacing: -.02em; }
+  details { border-bottom: 1px solid var(--borda); padding: 14px 0; } summary { font-weight: 700; cursor: pointer; }
+  footer { max-width: 720px; margin: 60px auto 0; padding: 24px 20px 48px; font-size: .85rem; color: var(--cinza); border-top: 1px solid var(--borda); }
+</style>
+</head>
+<body>
+<main>
+  <h1>Quanto sobra, <em>de verdade</em>, em cada doce que você vende?</h1>
+  <p class="lead">A Conta Doce é uma planilha que calcula o custo real e o preço sugerido de cada doce seu. Ela coloca na conta a sua hora, o gás, a luz, o DAS e a taxa da maquininha. Funciona no Google Planilhas do celular e no Excel.</p>
+  <p><a class="botao" href="#comprar">Quero a Conta Doce · R$ 27</a></p>
+
+  <h2>A conta que quase sempre fica incompleta</h2>
+  <p>Ingrediente e forminha a gente lembra. A sua hora de trabalho, o gás do forno e a taxa do cartão costumam ficar de fora. Veja o exemplo do brigadeiro vendido a R$ 1,50:</p>
+  <div class="conta" role="group" aria-label="Exemplo de cálculo com valores de exemplo">
+    <table>
+      <tr><td>Ingredientes e forminha</td><td>R$ 0,45</td></tr>
+      <tr><td>Sua hora de trabalho</td><td>R$ 0,50</td></tr>
+      <tr><td>Gás, luz e DAS</td><td>R$ 0,09</td></tr>
+      <tr class="total"><td>Custo real por doce</td><td>R$ 1,04</td></tr>
+      <tr><td>Quanto sobra a R$ 1,50 (já tirando 4% de taxa)</td><td>R$ 0,40</td></tr>
+      <tr class="total"><td>Preço sugerido com 30% de margem</td><td>R$ 2,00</td></tr>
+    </table>
+    <p class="nota" style="margin:10px 0 0">Valores de exemplo, para mostrar o cálculo. Não são preços de mercado: a planilha usa os seus números.</p>
+  </div>
+
+  <h2>Como funciona: 3 abas, uns 15 minutos</h2>
+  <ol class="passos">
+    <li><b>Custos do mês:</b> quanto você quer ganhar, quantas horas trabalha e os gastos fixos. A planilha calcula o valor da sua hora.</li>
+    <li><b>Insumos:</b> 52 ingredientes e embalagens já listados com tamanhos comuns. Você só coloca o preço do que usa.</li>
+    <li><b>Ficha do doce:</b> escolha os ingredientes, diga quanto rende e quanto tempo leva. Aparecem o custo real, o preço mínimo, o preço sugerido e quanto sobra no preço que você cobra hoje.</li>
+  </ol>
+  <figure><img src="img/ficha1.webp" width="900" height="1050" alt="Ficha de preço da planilha preenchida com o exemplo do brigadeiro: custo real de R$ 1,04 e preço sugerido de R$ 2,00" loading="lazy"><figcaption>Captura real da planilha, com valores de exemplo.</figcaption></figure>
+  <p>No fim, a aba <b>Tabela WhatsApp</b> junta os preços de todas as fichas em linhas prontas para copiar e mandar.</p>
+  <figure><img src="img/tabela.webp" width="900" height="236" alt="Tabela de preços com linhas prontas: Brigadeiro R$ 2,00, Beijinho R$ 2,00, Bolo de pote R$ 12,50" loading="lazy"><figcaption>Captura real, valores de exemplo.</figcaption></figure>
+
+  <h2>O que você recebe</h2>
+  <ul class="lista">
+    <li>Planilha Conta Doce (.xlsx) com 6 fichas de preço, a aba de insumos, a de custos do mês e a Tabela WhatsApp</li>
+    <li>Ficha de exemplo preenchida para você ver o cálculo antes de começar</li>
+    <li>Instruções para abrir no Google Planilhas pelo celular</li>
+    <li>Suporte por e-mail para dúvidas de uso</li>
+  </ul>
+
+  <h2>O que ela não faz</h2>
+  <p>Ela não sabe o preço da sua região e não garante vendas. A planilha calcula a partir dos números que você coloca. O resultado depende de você atualizar o preço dos insumos quando fizer compras.</p>
+
+  <div class="oferta" id="comprar">
+    <p style="margin:0">Conta Doce</p>
+    <p class="preco">R$ 27</p>
+    <p>Acesso imediato depois do pagamento. Garantia de 7 dias: se não servir para você, o reembolso é pela própria plataforma.</p>
+    <!-- TROQUE o href pelo link do checkout (Kiwify ou Hotmart), com as UTMs repassadas. -->
+    <p><a class="botao" id="checkout" href="#COLE-O-LINK-DO-CHECKOUT">Comprar a Conta Doce</a></p>
+    <p class="nota">No checkout, você pode adicionar a Agenda de Encomendas (R$ 12,90): pedidos, sinal, quanto falta receber e as entregas dos próximos dias em destaque.</p>
+  </div>
+
+  <h2>Perguntas</h2>
+  <details><summary>Não sei mexer em planilha. Vou conseguir?</summary><p>Você só preenche as células em creme; as verdes calculam sozinhas. A ficha de exemplo mostra o caminho. Se travar, mande uma mensagem para o suporte.</p></details>
+  <details><summary>Funciona no celular?</summary><p>Sim, pelo app Google Planilhas (grátis). No computador, abre no Excel ou no Google Planilhas.</p></details>
+  <details><summary>Tem planilha grátis na internet. Por que pagar?</summary><p>Esta já vem montada para confeitaria: a sua hora e os gastos fixos entram na conta, os insumos já estão listados, há preço mínimo e sugerido, e a tabela sai pronta para o WhatsApp. Você paga para não montar isso do zero.</p></details>
+  <details><summary>Se eu subir o preço, perco cliente?</summary><p>A planilha não decide por você. Ela mostra o custo real e o preço mínimo, abaixo do qual você paga para trabalhar. A decisão de preço continua sua.</p></details>
+  <details><summary>Serve para salgados e bolos?</summary><p>Sim. Qualquer receita com ingredientes, rendimento e tempo de preparo. Há 48 linhas livres para insumos que não estão na lista.</p></details>
+</main>
+<footer>
+  <!-- OBRIGATÓRIO antes de publicar (Decreto 7.962/2013): nome ou razão social, CPF ou CNPJ, endereço e contato do vendedor. -->
+  <p>Vendido por [NOME DO VENDEDOR] · CPF/CNPJ [PREENCHER] · [ENDEREÇO] · contato: [E-MAIL]</p>
+  <p>Os valores de exemplo desta página servem só para ilustrar o cálculo. Esta página não é afiliada à Meta.</p>
+</footer>
+<script>
+  // repassa as UTMs do anúncio para o checkout, para medir cada criativo
+  const a = document.getElementById('checkout'), q = location.search
+  if (q && !a.href.includes('#COLE')) a.href += (a.href.includes('?') ? '&' : '?') + q.slice(1)
+</script>
+</body>
+</html>
